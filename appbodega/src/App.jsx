@@ -4,18 +4,18 @@ import Home from "./routes/Home";
 import Login from "./routes/Login";
 import Registro from "./routes/Registro";
 
-import RequiereAuth from "./components/RequiereAuth";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (
-    <Routes className="App">
+    <Routes>
       <Route path="/login" element={<Login />}></Route>
       <Route
         path="/"
         element={
-          <RequiereAuth>
+          <ProtectedRoute>
             <Home />
-          </RequiereAuth>
+          </ProtectedRoute>
         }
       ></Route>
       <Route path="/registro" element={<Registro />}></Route>
