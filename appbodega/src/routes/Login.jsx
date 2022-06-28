@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
+
 import { useAuth } from "../context/AuthContex";
 
 const Login = () => {
@@ -20,7 +20,6 @@ const Login = () => {
 
   return (
     <div className="container">
-      <Navbar />
       <section className="vh-100 gradient-custom">
         <div className="container py-2 h-50">
           <div className="row d-flex justify-content-center align-items-center h-100">

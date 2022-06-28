@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Directorio = () => {
   return (
@@ -73,7 +74,9 @@ const Directorio = () => {
           </div>
           <div className="col d-flex align-items-start">
             <div>
-              <h4 className="fw-bold mb-0">Featured title</h4>
+              <Link to="/stockrepuestos" className="fw-bold mb-0 text-center">
+                Stock de Repuestos
+              </Link>
               <p>
                 Paragraph of text beneath the heading to explain the heading.
               </p>
@@ -92,7 +95,9 @@ const Directorio = () => {
           </div>
           <div className="col d-flex align-items-start form-label">
             <div>
-              <h4 className="fw-bold mb-0 text-center">Solicitud Mantencion</h4>
+              <Link to="/stockrepuestos" className="fw-bold mb-0 text-center">
+                Stock de Repuestos
+              </Link>
               <p>
                 Paragraph of text beneath the heading to explain the heading.
               </p>

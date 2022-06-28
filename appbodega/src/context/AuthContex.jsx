@@ -9,6 +9,7 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import { cargaInputs } from "../form";
 
 const authContext = createContext();
 
@@ -21,6 +22,8 @@ export const useAuth = () => {
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const imputs = cargaInputs;
 
   const signup = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -51,6 +54,7 @@ export default function AuthProvider({ children }) {
   return (
     <authContext.Provider
       value={{
+        imputs,
         signup,
         login,
         user,
