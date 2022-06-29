@@ -4,12 +4,12 @@ import { collection, getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCtKohXevrIaL9zQ6Hn-YoK2orvSNwSEb8",
-  authDomain: "compuestos2.firebaseapp.com",
-  projectId: "compuestos2",
-  storageBucket: "compuestos2.appspot.com",
-  messagingSenderId: "816798968810",
-  appId: "1:816798968810:web:08837d42cf0952c8b6a093",
+  apiKey: "AIzaSyDjAVSGbZjIdNOr9b8XWWbcSm6CD6YDid0",
+  authDomain: "compuestos-552a0.firebaseapp.com",
+  projectId: "compuestos-552a0",
+  storageBucket: "compuestos-552a0.appspot.com",
+  messagingSenderId: "520099289293",
+  appId: "1:520099289293:web:f4b663ddd909ebe03d7184",
 };
 
 // Initialize Firebase
@@ -19,4 +19,16 @@ export const db = getFirestore();
 export const storage = getStorage(app);
 
 export const consulta = collection(db, "cargados");
-export const consumidos = collection(db, "consumidos");
+
+const getMonth2 = () => {
+  let date = new Date();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  if (month < 10) {
+    return `0${1 + month}-${year}`;
+  } else {
+    return `${1 + month}-${year}`;
+  }
+};
+
+export const consumidos = collection(db, `consumo-${getMonth2()}`);

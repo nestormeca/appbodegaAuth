@@ -8,10 +8,13 @@ import {
   deleteDoc,
   addDoc,
   orderBy,
+  startAt,
+  endAt,
 } from "firebase/firestore";
 import { db } from "../../firebase";
+import moment from "moment";
 
-export default function TablaStock({
+export default function TablaStockconBotonesEliminar({
   codigoCaucho,
   nombre,
   descripcion,
@@ -29,6 +32,16 @@ export default function TablaStock({
     orderBy("Serie", "desc")
   );
 
+  const busquedaJunio = query(
+    collection(db, "consumo-07-2022"),
+    where("Codigo", "==", codigoCaucho),
+    orderBy("fecha"),
+    startAt("01/06/2022"),
+    endAt("30/06/2022")
+  );
+
+  console.log(busquedaJunio);
+
   const getMonth2 = () => {
     let date = new Date();
     let month = date.getMonth() + 1;
@@ -42,8 +55,11 @@ export default function TablaStock({
 
   const consumidos = collection(db, `consumo-${getMonth2()}`);
 
-  const cargaData = (a) => {
-    addDoc(consumidos, { ...a });
+  const pasarConsumido = (a) => {
+    addDoc(consumidos, {
+      fecha: new Date(),
+      ...a,
+    });
   };
 
   useEffect(() => {
@@ -76,7 +92,7 @@ export default function TablaStock({
   const deleteData = async (pallet) => {
     try {
       //setLoading((prev) => ({ ...prev, [nanoid]: true }));
-      const docRef = doc(db, "cargados", `${pallet.pallet}`);
+      const docRef = doc(db, "cargados", `${pallet}`);
       await deleteDoc(docRef);
       //setData(data.filter((doc) => doc.pallet !== pallet));
     } catch (error) {
@@ -84,30 +100,11 @@ export default function TablaStock({
     }
   };
 
-
-
-
-
-
-
-
   const handleClickDelete = async (pallet) => {
     console.log("click delete");
     await deleteData(pallet);
   };
 
-  // const getMaleUsers = async () => {
-  //   try {
-  //     const q = query(collection(db, "cargados"));
-  //     const querySnapshot = await getDocs(q);
-
-  //     const datos = querySnapshot.docs.map((doc) => doc.data());
-  //     setData(datos);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  //console.log(data);
   return (
     <div className="container">
       <div className="row align-items-start">
@@ -156,7 +153,7 @@ export default function TablaStock({
                       {d.Kilos}
                       <button
                         onClick={() => {
-                          cargaData(d);
+                          pasarConsumido(d);
                           handleClickDelete(d.id);
                         }}
                       >

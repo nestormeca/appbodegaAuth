@@ -1,5 +1,5 @@
 import React from "react";
-import TablaStock from "../TablaStock";
+import TablaStockconBotonesEliminar from "../TablaStockconBotonesEliminar";
 import TablaConsumo from "../TablaConsumo";
 import { BotonVolver } from "../../BotonVolver";
 
@@ -7,7 +7,7 @@ const V1V63 = () => {
   return (
     <>
       <BotonVolver />
-      <TablaStock
+      <TablaStockconBotonesEliminar
         nombre={"V1/63"}
         codigoCaucho={400894}
         descripcion={"COJÍN CALANDRADO 250x1 mm"}

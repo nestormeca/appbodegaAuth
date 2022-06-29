@@ -57,28 +57,36 @@ const TablaConsumoMes = () => {
         </thead>
         <tbody>
           <tr>
-            <th>V62{totalKilos(filtroV62)}</th>
+            <th>V62</th>
+            <th>{totalKilos(filtroV62)}</th>
           </tr>
           <tr>
-            <th>V63{totalKilos(filtroV63)}</th>
+            <th>V63</th>
+            <th>{totalKilos(filtroV63)}</th>
           </tr>
           <tr>
-            <th>V1/63{totalKilos(filtroV1V63)}</th>
+            <th>V1/63</th>
+            <th>{totalKilos(filtroV1V63)}</th>
           </tr>
           <tr>
-            <th>V65{totalKilos(filtroV65)}</th>
+            <th>V65</th>
+            <th>{totalKilos(filtroV65)}</th>
           </tr>
           <tr>
-            <th>V064{totalKilos(filtroV064)}</th>
+            <th>V064</th>
+            <th>{totalKilos(filtroV064)}</th>
           </tr>
           <tr>
-            <th>V066{totalKilos(filtroV066)}</th>
+            <th>V066</th>
+            <th>{totalKilos(filtroV066)}</th>
           </tr>
           <tr>
-            <th>V057{totalKilos(filtroV057)}</th>
+            <th>V057</th>
+            <th>{totalKilos(filtroV057)}</th>
           </tr>
           <tr>
-            <th>PR2{totalKilos(filtroPR2)}</th>
+            <th>PR2</th>
+            <th>{totalKilos(filtroPR2)}</th>
           </tr>
         </tbody>
       </table>

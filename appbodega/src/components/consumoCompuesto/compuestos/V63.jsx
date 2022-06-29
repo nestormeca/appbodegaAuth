@@ -1,5 +1,5 @@
 import React from "react";
-import TablaStock from "../TablaStock";
+import TablaStockconBotonesEliminar from "../TablaStockconBotonesEliminar";
 import TablaConsumo from "../TablaConsumo";
 import { BotonVolver } from "../../BotonVolver";
 
@@ -7,7 +7,7 @@ const V63 = () => {
   return (
     <>
       <BotonVolver />
-      <TablaStock
+      <TablaStockconBotonesEliminar
         nombre={"V63"}
         codigoCaucho={409521}
         descripcion={"MEZCLA V5 PARA LIGACIÓN ESPECIAL"}

@@ -1,5 +1,5 @@
 import React from "react";
-import TablaStock from "../TablaStock";
+import TablaStockconBotonesEliminar from "../TablaStockconBotonesEliminar";
 import TablaConsumo from "../TablaConsumo";
 import { BotonVolver } from "../../BotonVolver";
 
@@ -7,7 +7,7 @@ const V064 = () => {
   return (
     <>
       <BotonVolver />
-      <TablaStock
+      <TablaStockconBotonesEliminar
         nombre={"V064"}
         codigoCaucho={450287}
         descripcion={"ORBITIRA V4 PR 10"}

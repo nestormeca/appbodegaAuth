@@ -29,6 +29,7 @@ const ConsumoAno = () => {
       <div className="tab-content" id="pills-tabContent">
         {mesAno.map((label) => (
           <div
+            key={label.id}
             className="tab-pane fade"
             id={`pills-${label.id}`}
             role="tabpanel"
