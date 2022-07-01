@@ -8,11 +8,8 @@ import {
   deleteDoc,
   addDoc,
   orderBy,
-  startAt,
-  endAt,
 } from "firebase/firestore";
 import { db } from "../../firebase";
-import moment from "moment";
 
 export default function TablaStockconBotonesEliminar({
   codigoCaucho,
@@ -24,23 +21,13 @@ export default function TablaStockconBotonesEliminar({
 }) {
   const [data, setData] = useState([]);
 
-  const consulta = collection(db, "cargados");
+  const consulta = collection(db, "cauchoConsignado");
 
   const q = query(
     consulta,
     where("Codigo", "==", codigoCaucho),
     orderBy("Serie", "desc")
   );
-
-  const busquedaJunio = query(
-    collection(db, "consumo-07-2022"),
-    where("Codigo", "==", codigoCaucho),
-    orderBy("fecha"),
-    startAt("01/06/2022"),
-    endAt("30/06/2022")
-  );
-
-  console.log(busquedaJunio);
 
   const getMonth2 = () => {
     let date = new Date();
@@ -53,11 +40,17 @@ export default function TablaStockconBotonesEliminar({
     }
   };
 
-  const consumidos = collection(db, `consumo-${getMonth2()}`);
+  const consumidos = collection(db, "cauchoConsumido");
 
-  const pasarConsumido = (a) => {
-    addDoc(consumidos, {
-      fecha: new Date(),
+  const fechaCosumido = () => {
+    let id = new Date();
+    let milli = id.getTime();
+    return milli;
+  };
+
+  const pasarConsumido = async (a) => {
+    await addDoc(consumidos, {
+      fecha: fechaCosumido(),
       ...a,
     });
   };
@@ -92,7 +85,7 @@ export default function TablaStockconBotonesEliminar({
   const deleteData = async (pallet) => {
     try {
       //setLoading((prev) => ({ ...prev, [nanoid]: true }));
-      const docRef = doc(db, "cargados", `${pallet}`);
+      const docRef = doc(db, "cauchoConsignado", `${pallet}`);
       await deleteDoc(docRef);
       //setData(data.filter((doc) => doc.pallet !== pallet));
     } catch (error) {

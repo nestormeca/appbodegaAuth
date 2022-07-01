@@ -1,32 +1,58 @@
 import React from "react";
 
-import { consumidos } from "../../firebase";
+//import { cauchoConsumido } from "../../firebase";
 import { useEffect, useState } from "react";
-import { onSnapshot, query, where } from "firebase/firestore";
+import {
+  getDocs,
+  onSnapshot,
+  query,
+  where,
+  collection,
+} from "firebase/firestore";
+import { db } from "../../firebase";
 
 export default function TablaStock({ codigoCaucho, nombre }) {
   const [data, setData] = useState([]);
 
-  const q = query(consumidos, where("Codigo", "==", codigoCaucho));
+  const consumidos = collection(db, "cauchoConsumido");
+
+  const consultaConsumoMes = query(
+    consumidos,
+    where("Codigo", "==", codigoCaucho)
+  );
+
+  console.log(consultaConsumoMes);
 
   useEffect(() => {
-    const unsub = onSnapshot(
-      q,
-      (snapShot) => {
-        let list = [];
-        snapShot.docs.forEach((doc) => {
-          list.push({ id: doc.id, ...doc.data() });
-        });
+    const consumoMes = async () => {
+      const consulta = await getDocs(consultaConsumoMes);
+      let list = [];
+      consulta.forEach((doc) => {
+        list.push({ id: doc.id, ...doc.data() });
         setData(list);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-    return () => {
-      unsub();
+      });
     };
-  }, [q]);
+    consumoMes().catch(console.error);
+  }, []);
+
+  // useEffect(() => {
+  //   const unsub = onSnapshot(
+  //     consultaConsumoMes,
+  //     (snapShot) => {
+  //       let list = [];
+  //       snapShot.docs.forEach((doc) => {
+  //         list.push({ id: doc.id, ...doc.data() });
+  //       });
+  //       setData(list);
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  //   return () => {
+  //     unsub();
+  //   };
+  // }, []);
 
   const kilos = data.map((mov) => {
     return mov.Kilos;

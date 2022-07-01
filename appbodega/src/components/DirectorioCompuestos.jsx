@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { directorioCompuestos } from "../form";
-import { BotonInicioPeriodo } from "./consumoCompuesto/BotonInicioPeriodo";
+
 import Convertir from "./consumoCompuesto/Convertir";
 import ConsumoAno from "./consumoCompuesto/compuestos/ConsumoAno";
 import TablaConsumoMes from "./TablaConsumoMes";
@@ -10,7 +10,6 @@ const DirectorioCompuestos = () => {
   return (
     <div className="container px-4 py-5" id="icon-grid">
       <div>
-        <BotonInicioPeriodo />
         <Convertir />
       </div>
       <ConsumoAno />

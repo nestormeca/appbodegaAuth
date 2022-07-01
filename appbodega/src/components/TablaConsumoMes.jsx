@@ -1,17 +1,17 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect } from "react";
-import { consumidos } from "../firebase";
+import { cauchoConsumido } from "../firebase";
 import { db } from "../firebase";
 import { useState } from "react";
 
 const TablaConsumoMes = () => {
   const [data, setData] = useState([]);
 
-  const q = query(consumidos, where("Codigo", "==", "409607"));
+  const q = query(cauchoConsumido, where("Codigo", "==", "409607"));
 
   useEffect(() => {
     const cargarMesV62 = async () => {
-      const queryMes = await getDocs(collection(db, "consumo-07-2022"));
+      const queryMes = await getDocs(collection(db, "cauchoConsumido"));
       let list = [];
       queryMes.forEach((doc) => {
         list.push({ id: doc.id, ...doc.data() });

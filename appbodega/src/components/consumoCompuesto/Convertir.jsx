@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import * as XLSX from "xlsx";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { addDoc, Timestamp } from "firebase/firestore";
+import { cauchoConsignado, db } from "../../firebase";
 
 const Convertir = () => {
   const [items, setItems] = useState([]);
-  const data2 = [];
-  const cargados = collection(db, "cargados");
+
+  //const cargados = collection(db, "cauchoConsignado");
   const cargaData = (a) => {
-    addDoc(cargados, { ...a });
+    addDoc(cauchoConsignado, { ...a });
   };
   const readExcel = (file) => {
     const promise = new Promise((resolve, reject) => {
@@ -37,13 +37,16 @@ const Convertir = () => {
     try {
       for (let i = 0; i < items.length; i++) {
         const dato = items[i];
-        data2.push({
+        let data = [];
+        data.push({
           ...dato,
           Caducidad: new Date(
             (dato.Caducidad - (25567 + 2)) * 86400 * 1000
           ).toLocaleDateString(),
+          FechaRecibo: Timestamp.now(),
         });
-        setTimeout(cargaData(dato), 500);
+
+        setTimeout(cargaData(...data), 500);
       }
     } catch (error) {
       console.log(error);

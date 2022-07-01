@@ -1,0 +1,19 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "cargados",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "Codigo",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Serie",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
