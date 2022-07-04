@@ -5,8 +5,10 @@ import { BotonVolver } from "../../BotonVolver";
 
 const V1V63 = () => {
   return (
-    <>
-      <BotonVolver />
+    <div className="container d-flex flex-column">
+      <div className="">
+        <BotonVolver />
+      </div>
       <TablaStockconBotonesEliminar
         nombre={"V1/63"}
         codigoCaucho={400894}
@@ -16,7 +18,7 @@ const V1V63 = () => {
         mezcla={210039}
       />
       <TablaConsumo nombre={"V1/63"} codigoCaucho={400894} />
-    </>
+    </div>
   );
 };
 

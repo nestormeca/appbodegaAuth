@@ -67,51 +67,6 @@ export const directorioCompuestos = [
     label: "PR2",
   },
 ];
-export const columns = [
-  //   { field: "id", headerName: "ID", width: 70 },
-  { field: "compuesto", headerName: "Compuesto", width: 130 },
-  { field: "semana1", headerName: "Semana 1", type: "number", width: 90 },
-  {
-    field: "semana2",
-    headerName: "Semana 2",
-    type: "number",
-    width: 90,
-  },
-  {
-    field: "semana3",
-    headerName: "Semana 3",
-    type: "number",
-    width: 90,
-  },
-  {
-    field: "semana4",
-    headerName: "Semana 4",
-    type: "number",
-    width: 90,
-  },
-  {
-    field: "semana5",
-    headerName: "Semana 5",
-    type: "number",
-    width: 90,
-  },
-  {
-    field: "consumototal",
-    headerName: "Consumo del Mes",
-    type: "number",
-    width: 150,
-  },
-
-  {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    width: 60,
-    valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-  },
-];
 
 export const mesAno = [
   {
@@ -127,7 +82,7 @@ export const mesAno = [
     label: "Marzo",
   },
   {
-    id: "abrir",
+    id: "abril",
     label: "Abril",
   },
   {
@@ -145,6 +100,7 @@ export const mesAno = [
   {
     id: "agosto",
     label: "Agosto",
+    active: "active",
   },
   {
     id: "septiembre",
@@ -163,3 +119,48 @@ export const mesAno = [
     label: "Diciembre",
   },
 ];
+
+export const filtroColina = (data) => {
+  const datos = data.filter((d) => d.quienConsumio == "colina");
+  return datos;
+};
+
+export const filtroTierraAmarilla = (data) => {
+  const datos = data.filter((d) => d.quienConsumio == "tierraAmarilla");
+  return datos;
+};
+
+export const filtroV62 = (data) => {
+  const datos = data.filter((d) => d.Codigo == 409607);
+  return datos;
+};
+
+export const filtroV63 = (data) => {
+  const datos = data.filter((d) => d.Codigo == 409521);
+  return datos;
+};
+
+export const filtroV1V63 = (data) => {
+  const datos = data.filter((d) => d.Codigo == 400894);
+  return datos;
+};
+export const filtroV65 = (data) => {
+  const datos = data.filter((d) => d.Codigo == 409547);
+  return datos;
+};
+export const filtroV064 = (data) => {
+  const datos = data.filter((d) => d.Codigo == 450287);
+  return datos;
+};
+export const filtroV066 = (data) => {
+  const datos = data.filter((d) => d.Codigo == 450289);
+  return datos;
+};
+export const filtroV057 = (data) => {
+  const datos = data.filter((d) => d.Codigo == 451004);
+  return datos;
+};
+export const filtroPR2 = (data) => {
+  const datos = data.filter((d) => d.Codigo == 409829);
+  return datos;
+};

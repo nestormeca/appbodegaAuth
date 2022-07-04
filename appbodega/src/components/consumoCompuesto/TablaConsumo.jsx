@@ -21,8 +21,6 @@ export default function TablaStock({ codigoCaucho, nombre }) {
     where("Codigo", "==", codigoCaucho)
   );
 
-  console.log(consultaConsumoMes);
-
   useEffect(() => {
     const consumoMes = async () => {
       const consulta = await getDocs(consultaConsumoMes);

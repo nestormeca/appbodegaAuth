@@ -21,13 +21,11 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export const db = getFirestore();
-connectFirestoreEmulator(db, "localhost", 8080);
-
 export const storage = getStorage(app);
-
 export const cauchoConsignado = collection(db, "cauchoConsignado");
 export const cauchoConsumido = collection(db, "cauchoComsumido");
 
+connectFirestoreEmulator(db, "localhost", 8080);
 // const getMonth2 = () => {
 //   let date = new Date();
 //   let month = date.getMonth() + 1;

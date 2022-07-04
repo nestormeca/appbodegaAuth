@@ -10,6 +10,7 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { db } from "../../firebase";
+import { mesAno } from "../../form";
 
 export default function TablaStockconBotonesEliminar({
   codigoCaucho,
@@ -20,6 +21,16 @@ export default function TablaStockconBotonesEliminar({
   mezcla,
 }) {
   const [data, setData] = useState([]);
+  const [selected, setSelected] = useState(0);
+  const [quienConsumio, setquienConsumio] = useState(0);
+
+  const handleChange = (event) => {
+    setSelected(event.target.value);
+  };
+
+  const handleChangeQuienConsumio = (event) => {
+    setquienConsumio(event.target.value);
+  };
 
   const consulta = collection(db, "cauchoConsignado");
 
@@ -40,6 +51,18 @@ export default function TablaStockconBotonesEliminar({
     }
   };
 
+  const getDate = () => {
+    let date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    if (month < 10) {
+      return `${day}-0${month}-${year}`;
+    } else {
+      return `${day}-${month}-${year}`;
+    }
+  };
+
   const consumidos = collection(db, "cauchoConsumido");
 
   const fechaCosumido = () => {
@@ -48,9 +71,11 @@ export default function TablaStockconBotonesEliminar({
     return milli;
   };
 
-  const pasarConsumido = async (a) => {
+  const pasarConsumido = async (a, b) => {
     await addDoc(consumidos, {
       fecha: fechaCosumido(),
+      periodoInventario: selected,
+      quienConsumio: quienConsumio,
       ...a,
     });
   };
@@ -145,10 +170,10 @@ export default function TablaStockconBotonesEliminar({
                     <th>
                       {d.Kilos}
                       <button
-                        onClick={() => {
-                          pasarConsumido(d);
-                          handleClickDelete(d.id);
-                        }}
+                        type="button"
+                        className="btn btn-primary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
                       >
                         ❌
                       </button>
@@ -157,6 +182,201 @@ export default function TablaStockconBotonesEliminar({
                     <th>{d.Lote}</th>
                     <th>{d.Caducidad}</th>
                     <th>{d.Solicitud}</th>
+                    <th>
+                      <div
+                        className="modal fade"
+                        id="exampleModal"
+                        tabIndex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true"
+                      >
+                        <div className="modal-dialog">
+                          <div className="modal-content">
+                            <div className="modal-header">
+                              <h5
+                                className="modal-title text-center"
+                                id="exampleModalLabel"
+                              >
+                                Serie: {d.Serie}
+                              </h5>
+                              <button
+                                type="button"
+                                className="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                            <div className="modal-body">
+                              <div className="input-group mb-3">
+                                <span
+                                  className="input-group-text"
+                                  id="basic-addon1"
+                                >
+                                  Serie
+                                </span>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  placeholder={d.Serie}
+                                  aria-label="Username"
+                                  aria-describedby="basic-addon1"
+                                  disabled
+                                />
+                              </div>
+                              <div className="input-group mb-3">
+                                <span
+                                  className="input-group-text"
+                                  id="basic-addon1"
+                                >
+                                  Kilos
+                                </span>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  placeholder={d.Kilos}
+                                  aria-label="Username"
+                                  aria-describedby="basic-addon1"
+                                  disabled
+                                />
+                              </div>
+                              <div className="input-group mb-3">
+                                <span
+                                  className="input-group-text"
+                                  id="basic-addon1"
+                                >
+                                  Lote
+                                </span>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  placeholder={d.Lote}
+                                  aria-label="Username"
+                                  aria-describedby="basic-addon1"
+                                  disabled
+                                />
+                              </div>
+                              <div className="input-group mb-3">
+                                <span
+                                  className="input-group-text"
+                                  id="basic-addon1"
+                                >
+                                  Vecimiento
+                                </span>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  placeholder={d.Caducidad}
+                                  aria-label="Username"
+                                  aria-describedby="basic-addon1"
+                                  disabled
+                                />
+                              </div>
+                              <div className="input-group mb-3">
+                                <span
+                                  className="input-group-text"
+                                  id="basic-addon1"
+                                >
+                                  Solicitud
+                                </span>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  placeholder={d.Solicitud}
+                                  aria-label="Username"
+                                  aria-describedby="basic-addon1"
+                                  disabled
+                                />
+                              </div>
+                              <div className="input-group mb-3">
+                                <span
+                                  className="input-group-text"
+                                  id="basic-addon1"
+                                >
+                                  Fecha de Consumo
+                                </span>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  placeholder={getDate()}
+                                  aria-label="Username"
+                                  aria-describedby="basic-addon1"
+                                  disabled
+                                />
+                              </div>
+
+                              <div className="input-group mb-3">
+                                <label
+                                  className="input-group-text"
+                                  htmlFor="inputGroupSelect01"
+                                >
+                                  Periodo de Inventario
+                                </label>
+                                <select
+                                  className="form-select"
+                                  id="inputGroupSelect01"
+                                  onChange={handleChange}
+                                  defaultValue=""
+                                >
+                                  <option value="" disabled>
+                                    Selecciona Mes...
+                                  </option>
+
+                                  {mesAno.map((meses, i) => (
+                                    <option value={meses.id} key={i}>
+                                      {meses.label}
+                                    </option>
+                                  ))}
+                                </select>
+                              </div>
+                              <div className="input-group mb-3">
+                                <label
+                                  className="input-group-text"
+                                  htmlFor="inputGroupSelect01"
+                                >
+                                  Quien Consume:
+                                </label>
+                                <select
+                                  className="form-select"
+                                  id="inputGroupSelect01"
+                                  onChange={handleChangeQuienConsumio}
+                                  defaultValue=""
+                                >
+                                  <option value="" disabled>
+                                    Selecciona...
+                                  </option>
+
+                                  <option value="colina">Planta Colina</option>
+                                  <option value="tierraAmarilla">
+                                    Planta Tierra Amarilla
+                                  </option>
+                                  <option value="vipal">Vipal</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div className="modal-footer">
+                              <button
+                                type="button"
+                                className="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                              >
+                                Cancelar
+                              </button>
+                              <button
+                                type="button"
+                                className="btn btn-primary"
+                                onClick={() => {
+                                  pasarConsumido(d);
+                                  handleClickDelete(d.id);
+                                }}
+                                data-bs-dismiss="modal"
+                              >
+                                Pasar a Consumido
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </th>
                   </tr>
                 ))}
               </tbody>
@@ -165,6 +385,7 @@ export default function TablaStockconBotonesEliminar({
           {/* <button onClick={getMaleUsers}>pedir</button> */}
         </div>
       </div>
+
       <hr />
     </div>
   );
