@@ -41,16 +41,86 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/stockrepuestos/equipos" element={<Gruas />} />
-        <Route path="/compuestosCaucho" element={<DirectorioCompuestos />} />
-        <Route path="/compuestosCaucho/v62" element={<V62 />} />
-        <Route path="/compuestosCaucho/v63" element={<V63 />} />
-        <Route path="/compuestosCaucho/v1v63" element={<V1V63 />} />
-        <Route path="/compuestosCaucho/v65" element={<V65 />} />
-        <Route path="/compuestosCaucho/v064" element={<V064 />} />
-        <Route path="/compuestosCaucho/v066" element={<V066 />} />
-        <Route path="/compuestosCaucho/v057" element={<V057 />} />
-        <Route path="/compuestosCaucho/pr2" element={<PR2 />} />
+        <Route
+          path="/stockrepuestos/equipos"
+          element={
+            <ProtectedRoute>
+              <Gruas />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/compuestosCaucho"
+          element={
+            <ProtectedRoute>
+              <DirectorioCompuestos />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/compuestosCaucho/v62"
+          element={
+            <ProtectedRoute>
+              <V62 />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/compuestosCaucho/v63"
+          element={
+            <ProtectedRoute>
+              <V63 />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/compuestosCaucho/v1v63"
+          element={
+            <ProtectedRoute>
+              <V1V63 />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/compuestosCaucho/v65"
+          element={
+            <ProtectedRoute>
+              <V65 />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/compuestosCaucho/v064"
+          element={
+            <ProtectedRoute>
+              <V064 />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/compuestosCaucho/v066"
+          element={
+            <ProtectedRoute>
+              <V066 />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/compuestosCaucho/v057"
+          element={
+            <ProtectedRoute>
+              <V057 />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/compuestosCaucho/pr2"
+          element={
+            <ProtectedRoute>
+              <PR2 />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );

@@ -1,5 +1,6 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { cauchoConsumido, db } from "../../../../firebase";
 import {
   filtroColina,
@@ -21,7 +22,7 @@ const Diciembre = () => {
 
   const consulta = collection(db, "cauchoConsumido");
 
-  const q = query(consulta, where("periodoInventario", "==", "diciembre"));
+  const q = query(consulta, where("periodoInventario", "==", "Diciembre"));
 
   useEffect(() => {
     const cargarMes = async () => {
@@ -66,6 +67,8 @@ const Diciembre = () => {
     return mov.Kilos;
   });
 
+  console.log(kilos);
+
   const totalKilos = (d) => {
     const k = d.map((mov) => mov.Kilos);
     const h = k.reduce((acc, cur) => {
@@ -76,58 +79,131 @@ const Diciembre = () => {
 
   return (
     <div className="container d-flex justify-content-center flex-column">
-      <table className="table">
+      <table className="table table-bordered table-hover table-sm">
         <thead>
           <tr>
-            <th scope="col-6">COMPUESTO</th>
-            <th scope="col-6" className="text-uppercase">
-              PLANTA COLINA
+            <th scope="col-4" className="text-uppercase col-2"></th>
+            <th scope="col-4" className="text-uppercase col-5">
+              <h5>PLANTA COLINA Kg</h5>
             </th>
-            <th scope="col-6" className="text-uppercase">
-              PLANTA TIERRA AMARILLA
+            <th scope="col-4" className="text-uppercase col-5">
+              <h5>PLANTA TIERRA AMARILLA Kg</h5>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th>V62</th>
-            <th>{totalKilos(filtroV62Colina)}</th>
-            <th>{totalKilos(filtroV62TAM)}</th>
+            <th>
+              <h5>
+                <Link to="v62">V62 (409607)</Link>
+              </h5>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV62Colina)}</h2>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV62TAM)}</h2>
+            </th>
           </tr>
           <tr>
-            <th>V63</th>
-            <th>{totalKilos(filtroV63Colina)}</th>
-            <th>{totalKilos(filtroV63TAM)}</th>
+            <th>
+              <h5>
+                <Link to="v63">V63 (409521)</Link>
+              </h5>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV63Colina)}</h2>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV63TAM)}</h2>
+            </th>
           </tr>
           <tr>
-            <th>V1/63</th>
-            <th>{totalKilos(filtroV1V63Colina)}</th>
-            <th>{totalKilos(filtroV1V63TAM)}</th>
+            <th>
+              <h5>
+                <Link to="v1v63">V1/63 (400894)</Link>
+              </h5>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV1V63Colina)}</h2>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV1V63TAM)}</h2>
+            </th>
           </tr>
           <tr>
-            <th>V65</th>
-            <th>{totalKilos(filtroV65Colina)}</th>
-            <th>{totalKilos(filtroV65TAM)}</th>
+            <th>
+              <h5>
+                <Link to="v65">V65 (409547)</Link>
+              </h5>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV65Colina)}</h2>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV65TAM)}</h2>
+            </th>
           </tr>
           <tr>
-            <th>V064</th>
-            <th>{totalKilos(filtroV064Colina)}</th>
-            <th>{totalKilos(filtroV064TAM)}</th>
+            <th>
+              <h5>
+                <Link to="v064">V064 (450287)</Link>
+              </h5>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV064Colina)}</h2>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV064TAM)}</h2>
+            </th>
           </tr>
           <tr>
-            <th>V066</th>
-            <th>{totalKilos(filtroV066Colina)}</th>
-            <th>{totalKilos(filtroV066TAM)}</th>
+            <th>
+              <h5>
+                <Link to="v066">V066 (450289)</Link>
+              </h5>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV066Colina)}</h2>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV066TAM)}</h2>
+            </th>
           </tr>
           <tr>
-            <th>V057</th>
-            <th>{totalKilos(filtroV057Colina)}</th>
-            <th>{totalKilos(filtroV057TAM)}</th>
+            <th>
+              <h5>
+                <Link to="v057">V057 (450289)</Link>
+              </h5>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV057Colina)}</h2>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroV057TAM)}</h2>
+            </th>
           </tr>
           <tr>
-            <th>PR2</th>
-            <th>{totalKilos(filtroPR2Colina)}</th>
-            <th>{totalKilos(filtroPR2TAM)}</th>
+            <th>
+              <h5>
+                <Link to="pr2">PR2 (409547)</Link>
+              </h5>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroPR2Colina)}</h2>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroPR2TAM)}</h2>
+            </th>
+          </tr>
+          <tr>
+            <th className="text-end">Total Consumido:</th>
+            <th>
+              <h2>{totalKilos(filtroQuienConsumioColina)}</h2>
+            </th>
+            <th>
+              <h2>{totalKilos(filtroQuienConsumioTAM)}</h2>
+            </th>
           </tr>
         </tbody>
       </table>

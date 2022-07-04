@@ -43,121 +43,121 @@ const ConsumoAno = () => {
 
       <div className="tab-content" id="pills-tabContent">
         <div
-          key="enero"
+          key="Enero"
           className="tab-pane fade"
-          id={`pills-enero`}
+          id={`pills-Enero`}
           role="tabpanel"
-          aria-labelledby={`#pills-enero`}
+          aria-labelledby={`#pills-Enero`}
           tabIndex="0"
         >
           <Enero />
         </div>
         <div
-          key="febrero"
+          key="Febrero"
           className="tab-pane fade"
-          id={`pills-febrero`}
+          id={`pills-Febrero`}
           role="tabpanel"
-          aria-labelledby={`#pills-febrero`}
+          aria-labelledby={`#pills-Febrero`}
           tabIndex="0"
         >
           <Febrero />
         </div>
         <div
-          key="marzo"
+          key="Marzo"
           className="tab-pane fade"
-          id={`pills-marzo`}
+          id={`pills-Marzo`}
           role="tabpanel"
-          aria-labelledby={`#pills-marzo`}
+          aria-labelledby={`#pills-Marzo`}
           tabIndex="0"
         >
           <Marzo />
         </div>
         <div
-          key="abril"
+          key="Abril"
           className="tab-pane fade"
-          id={`pills-abril`}
+          id={`pills-Abril`}
           role="tabpanel"
-          aria-labelledby={`#pills-abril`}
+          aria-labelledby={`#pills-Abril`}
           tabIndex="0"
         >
           <Abril />
         </div>
         <div
-          key="mayo"
+          key="Mayo"
           className="tab-pane fade"
-          id={`pills-mayo`}
+          id={`pills-Mayo`}
           role="tabpanel"
-          aria-labelledby={`#pills-mayo`}
+          aria-labelledby={`#pills-Mayo`}
           tabIndex="0"
         >
           <Mayo />
         </div>
         <div
-          key="junio"
+          key="Junio"
           className="tab-pane fade"
-          id={`pills-junio`}
+          id={`pills-Junio`}
           role="tabpanel"
-          aria-labelledby={`#pills-junio`}
+          aria-labelledby={`#pills-Junio`}
           tabIndex="0"
         >
           <Junio />
         </div>
         <div
-          key="julio"
-          className="tab-pane fade"
-          id={`pills-julio`}
+          key="Julio"
+          className="tab-pane fade show active"
+          id={`pills-Julio`}
           role="tabpanel"
-          aria-labelledby={`#pills-julio`}
+          aria-labelledby={`#pills-Julio`}
           tabIndex="0"
         >
           <Julio />
         </div>
         <div
-          key="agosto"
-          className="tab-pane fade show active"
-          id={`pills-agosto`}
+          key="Agosto"
+          className="tab-pane fade"
+          id={`pills-Agosto`}
           role="tabpanel"
-          aria-labelledby={`#pills-agosto`}
+          aria-labelledby={`#pills-Agosto`}
           tabIndex="0"
         >
           <Agosto />
         </div>
         <div
-          key="septiembre"
+          key="Septiembre"
           className="tab-pane fade"
-          id={`pills-septiembre`}
+          id={`pills-Septiembre`}
           role="tabpanel"
-          aria-labelledby={`#pills-septiembre`}
+          aria-labelledby={`#pills-Septiembre`}
           tabIndex="0"
         >
           <Septiembre />
         </div>
         <div
-          key="octubre"
+          key="Octubre"
           className="tab-pane fade"
-          id={`pills-octubre`}
+          id={`pills-Octubre`}
           role="tabpanel"
-          aria-labelledby={`#pills-octubre`}
+          aria-labelledby={`#pills-Octubre`}
           tabIndex="0"
         >
           <Octubre />
         </div>
         <div
-          key="noviembre"
+          key="Noviembre"
           className="tab-pane fade"
-          id={`pills-noviembre`}
+          id={`pills-Noviembre`}
           role="tabpanel"
-          aria-labelledby={`#pills-noviembre`}
+          aria-labelledby={`#pills-Noviembre`}
           tabIndex="0"
         >
           <Noviembre />
         </div>
         <div
-          key="diciembre"
+          key="Diciembre"
           className="tab-pane fade"
-          id={`pills-diciembre`}
+          id={`pills-Diciembre`}
           role="tabpanel"
-          aria-labelledby={`#pills-diciembre`}
+          aria-labelledby={`#pills-Diciembre`}
           tabIndex="0"
         >
           <Diciembre />

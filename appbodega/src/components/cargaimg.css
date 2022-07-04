@@ -5,10 +5,10 @@ html,
 body {
   position: relative;
   height: 100%;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #000;
   margin: 0;
@@ -45,4 +45,15 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+th,
+tr,
+tbody {
+  text-align: center;
+  border-color: beige;
+}
+thead {
+  background-color: #ff9933;
+  border: #000;
 }

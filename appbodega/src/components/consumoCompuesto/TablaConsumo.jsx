@@ -1,5 +1,5 @@
 import React from "react";
-
+import moment from "moment";
 //import { cauchoConsumido } from "../../firebase";
 import { useEffect, useState } from "react";
 import {
@@ -21,36 +21,36 @@ export default function TablaStock({ codigoCaucho, nombre }) {
     where("Codigo", "==", codigoCaucho)
   );
 
-  useEffect(() => {
-    const consumoMes = async () => {
-      const consulta = await getDocs(consultaConsumoMes);
-      let list = [];
-      consulta.forEach((doc) => {
-        list.push({ id: doc.id, ...doc.data() });
-        setData(list);
-      });
-    };
-    consumoMes().catch(console.error);
-  }, []);
-
   // useEffect(() => {
-  //   const unsub = onSnapshot(
-  //     consultaConsumoMes,
-  //     (snapShot) => {
-  //       let list = [];
-  //       snapShot.docs.forEach((doc) => {
-  //         list.push({ id: doc.id, ...doc.data() });
-  //       });
+  //   const consumoMes = async () => {
+  //     const consulta = await getDocs(consultaConsumoMes);
+  //     let list = [];
+  //     consulta.forEach((doc) => {
+  //       list.push({ id: doc.id, ...doc.data() });
   //       setData(list);
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   );
-  //   return () => {
-  //     unsub();
+  //     });
   //   };
+  //   consumoMes().catch(console.error);
   // }, []);
+
+  useEffect(() => {
+    const unsub = onSnapshot(
+      consultaConsumoMes,
+      (snapShot) => {
+        let list = [];
+        snapShot.docs.forEach((doc) => {
+          list.push({ id: doc.id, ...doc.data() });
+        });
+        setData(list);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    return () => {
+      unsub();
+    };
+  }, []);
 
   const kilos = data.map((mov) => {
     return mov.Kilos;
@@ -89,6 +89,15 @@ export default function TablaStock({ codigoCaucho, nombre }) {
                   <th className="w-0" scope="col">
                     Solicitud
                   </th>
+                  <th className="w-0" scope="col">
+                    Fecha Consumido:
+                  </th>
+                  <th className="w-0" scope="col">
+                    Mes Inventario:
+                  </th>
+                  <th className="w-0" scope="col">
+                    Planta:
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -99,6 +108,9 @@ export default function TablaStock({ codigoCaucho, nombre }) {
                     <th>{d.Lote}</th>
                     <th>{d.Caducidad}</th>
                     <th>{d.Solicitud}</th>
+                    <th>{moment(d.fecha).format("L")}</th>
+                    <th>{d.periodoInventario}</th>
+                    <th>{d.quienConsumio}</th>
                   </tr>
                 ))}
               </tbody>

@@ -345,8 +345,8 @@ export default function TablaStockconBotonesEliminar({
                                     Selecciona...
                                   </option>
 
-                                  <option value="colina">Planta Colina</option>
-                                  <option value="tierraAmarilla">
+                                  <option value="Colina">Planta Colina</option>
+                                  <option value="Tierra Amarilla">
                                     Planta Tierra Amarilla
                                   </option>
                                   <option value="vipal">Vipal</option>

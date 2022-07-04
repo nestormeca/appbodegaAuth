@@ -70,63 +70,63 @@ export const directorioCompuestos = [
 
 export const mesAno = [
   {
-    id: "enero",
+    id: "Enero",
     label: "Enero",
   },
   {
-    id: "febrero",
+    id: "Febrero",
     label: "Febrero",
   },
   {
-    id: "marzo",
+    id: "Marzo",
     label: "Marzo",
   },
   {
-    id: "abril",
+    id: "Abril",
     label: "Abril",
   },
   {
-    id: "mayo",
+    id: "Mayo",
     label: "Mayo",
   },
   {
-    id: "junio",
+    id: "Junio",
     label: "Junio",
   },
   {
-    id: "julio",
+    id: "Julio",
     label: "Julio",
-  },
-  {
-    id: "agosto",
-    label: "Agosto",
     active: "active",
   },
   {
-    id: "septiembre",
+    id: "Agosto",
+    label: "Agosto",
+  },
+  {
+    id: "Septiembre",
     label: "Septiembre",
   },
   {
-    id: "octubre",
+    id: "Octubre",
     label: "Octubre",
   },
   {
-    id: "noviembre",
+    id: "Noviembre",
     label: "Noviembre",
   },
   {
-    id: "diciembre",
+    id: "Diciembre",
     label: "Diciembre",
   },
 ];
 
 export const filtroColina = (data) => {
-  const datos = data.filter((d) => d.quienConsumio == "colina");
+  const datos = data.filter((d) => d.quienConsumio == "Colina");
   return datos;
 };
 
 export const filtroTierraAmarilla = (data) => {
-  const datos = data.filter((d) => d.quienConsumio == "tierraAmarilla");
+  const datos = data.filter((d) => d.quienConsumio == "Tierra Amarilla");
   return datos;
 };
 
