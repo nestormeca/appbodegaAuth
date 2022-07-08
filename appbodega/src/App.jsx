@@ -18,6 +18,7 @@ import V064 from "./components/consumoCompuesto/compuestos/V064";
 import V066 from "./components/consumoCompuesto/compuestos/V066";
 import PR2 from "./components/consumoCompuesto/compuestos/PR2";
 import V057 from "./components/consumoCompuesto/compuestos/V057";
+import { CargaDeCaucho } from "./routes/CargaDeCaucho";
 
 const App = () => {
   return (
@@ -118,6 +119,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <PR2 />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/compuestosCaucho/cargarcompuesto"
+          element={
+            <ProtectedRoute>
+              <CargaDeCaucho />
             </ProtectedRoute>
           }
         />
