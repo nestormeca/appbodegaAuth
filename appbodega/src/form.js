@@ -31,6 +31,10 @@ export const cargaInputs = [
     id: "stockRepuestos",
     label: "Stock de Repuestos",
   },
+  {
+    id: "solicitudDeCompuesto",
+    label: "Solicitud de Compuesto",
+  },
 ];
 
 export const directorioCompuestos = [

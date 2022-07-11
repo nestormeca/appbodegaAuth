@@ -67,8 +67,6 @@ const Diciembre = () => {
     return mov.Kilos;
   });
 
-  console.log(kilos);
-
   const totalKilos = (d) => {
     const k = d.map((mov) => mov.Kilos);
     const h = k.reduce((acc, cur) => {

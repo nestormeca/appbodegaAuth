@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { directorioCompuestos } from "../form";
 import ConsumoAno from "./consumoCompuesto/compuestos/ConsumoAno";
 import Convertir from "./consumoCompuesto/Convertir";
+import ResumenDeStock from "./consumoCompuesto/ResumenDeStock";
 
 const DirectorioCompuestos = () => {
   return (
@@ -17,6 +18,9 @@ const DirectorioCompuestos = () => {
 
       <div className="row-cols-auto">
         <Convertir />
+      </div>
+      <div className="row-cols-auto">
+        <ResumenDeStock />
       </div>
     </div>
   );

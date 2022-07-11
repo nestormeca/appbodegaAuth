@@ -88,8 +88,8 @@ const Convertir = () => {
             </tr>
           </thead>
           <tbody>
-            {items.map((d) => (
-              <tr key={d.id}>
+            {items.map((d, i) => (
+              <tr key={i}>
                 <th>{d.Codigo}</th>
                 <th>{d.Serie}</th>
                 <th>{d.Lote}</th>

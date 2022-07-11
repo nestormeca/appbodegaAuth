@@ -40,6 +40,7 @@ const Navbar = () => {
           id="navbarNav"
         >
           <ul className="navbar-nav">
+            <li></li>
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/">
                 Bodega
@@ -50,13 +51,14 @@ const Navbar = () => {
                 <>
                   <Link className="nav-link" to="/login">
                     Login
-                  </Link>{" "}
+                  </Link>
                 </>
               ) : (
                 <>
                   <Link className="btn" onClick={handleLogout} to="/login">
                     Logout
                   </Link>
+                  {user.displayName}
                 </>
               )}
             </li>
