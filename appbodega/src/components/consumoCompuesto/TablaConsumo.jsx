@@ -116,7 +116,6 @@ export default function TablaStock({ codigoCaucho, nombre }) {
               </tbody>
             </table>
           </div>
-          {/* <button onClick={getMaleUsers}>pedir</button> */}
         </div>
       </div>
       <hr />
