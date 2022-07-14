@@ -42,7 +42,10 @@ export const SolicitudDeCompuesto = () => {
   };
 
   const cargaData = (b) => {
-    setDoc(doc(db, "solicitudCaucho", "1"), { ...b, FechaRecibo: getDate() });
+    setDoc(doc(db, "solicitudCaucho", `${solicitud.length + 1}`), {
+      ...b,
+      FechaRecibo: getDate(),
+    });
   };
 
   const handleAdd = async (e) => {
@@ -81,9 +84,6 @@ export const SolicitudDeCompuesto = () => {
   }, []);
 
   console.log(solicitud);
-
-  solicitud.forEach((d) => { 
-    d.map(e) => (console.log(e))})
 
   return (
     <div className="container">
