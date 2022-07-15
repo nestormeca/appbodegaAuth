@@ -49,7 +49,6 @@ export const SolicitudDeCompuesto = () => {
   };
 
   const handleAdd = async (e) => {
-    e.preventDefault();
     try {
       for (let i = 0; i < datas.length; i++) {
         const dato = datas[i];
@@ -130,7 +129,10 @@ export const SolicitudDeCompuesto = () => {
           </div>
         </div>
         <div className="">Solicitudes Realizadas:</div>
-        <input className="btn btn-success" type="submit" value="Agregar" />
+        <button className="btn btn-success" type="submit" value="Agregar">
+          {" "}
+          Agregar
+        </button>
       </form>
       <hr />
       <div>
@@ -144,8 +146,8 @@ export const SolicitudDeCompuesto = () => {
           <tbody>
             {datas.map((pre, i) => (
               <tr key={i}>
-                <th>{pre.cantidadPedida}</th>
                 <th>{pre.tipoDeCaucho}</th>
+                <th>{pre.cantidadPedida}</th>
               </tr>
             ))}
           </tbody>
@@ -154,6 +156,15 @@ export const SolicitudDeCompuesto = () => {
           Enviar
         </button>
       </div>
+      {solicitud.map((dat, i) => {
+        for (const prop in dat) {
+          let sol = Object.values(dat[prop]);
+          //let proper = Object.getOwnPropertyNames(dat[prop]);
+          console.log(dat[prop]);
+          //console.log(sol);
+          //return <div>{sol}</div>;
+        }
+      })}
     </div>
   );
 };
