@@ -60,6 +60,8 @@ export default function TablaStock({ codigoCaucho, nombre }) {
     return acc + cur;
   }, 0);
 
+  console.log(data);
+
   return (
     <div className="container">
       <div className="row align-items-start">

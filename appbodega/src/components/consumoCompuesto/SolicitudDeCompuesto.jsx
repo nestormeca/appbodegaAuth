@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import {
   addDoc,
   collection,
@@ -6,7 +5,9 @@ import {
   doc,
   setDoc,
   getDocs,
+  getDoc,
   query,
+  orderBy,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -34,18 +35,18 @@ export const SolicitudDeCompuesto = () => {
 
   const onSubmit = (d) => {
     const preSolicitud = {
-      tipoDeCaucho: d.tipoDeCaucho,
-      cantidadPedida: d.cantidadPedida,
+      TipoDeCaucho: d.tipoDeCaucho,
+      CantidadSolicitada: d.cantidadPedida,
+      FechaDeSolicitud: getDate(),
+      FechaDeRecibido: "",
+      CantidadRecibida: "",
+      NumeroDeSolicitud: "",
     };
-
     setData([...datas, preSolicitud]);
   };
-
+  console.log(datas);
   const cargaData = (b) => {
-    setDoc(doc(db, "solicitudCaucho", `${solicitud.length + 1}`), {
-      ...b,
-      FechaRecibo: getDate(),
-    });
+    addDoc(collection(db, "solicitudesDeCaucho"), ...b);
   };
 
   const handleAdd = async (e) => {
@@ -55,10 +56,9 @@ export const SolicitudDeCompuesto = () => {
         let data = [];
         data.push({
           ...dato,
-          FechaRecibo: getDate(),
         });
-
-        setTimeout(cargaData(datas), 500);
+        console.log(data);
+        setTimeout(cargaData(data), 500);
         setData([]);
       }
     } catch (error) {
@@ -67,7 +67,10 @@ export const SolicitudDeCompuesto = () => {
     setItems([]);
   };
 
-  const docRef = query(collection(db, "solicitudCaucho"));
+  const docRef = query(
+    collection(db, "solicitudesDeCaucho"),
+    orderBy("NumeroDeSolicitud")
+  );
 
   useEffect(() => {
     const solicitudes = async () => {
@@ -83,6 +86,23 @@ export const SolicitudDeCompuesto = () => {
   }, []);
 
   console.log(solicitud);
+
+  // solicitud.map((dat, i, arr) => {
+  //   console.log(dat);
+  // });
+
+  // solicitud.map((dat, i) => {
+  //   for (const prop in dat) {
+  //     let sol = Object.values(dat[prop]);
+  //     //let proper = Object.getOwnPropertyNames(dat[prop]);
+  //     // console.log(dat[prop]);
+  //     console.log(dat[prop].cantidadPedida);
+  //     console.log(dat[prop].tipoDeCaucho);
+  //     // console.log(sol);
+  //     //console.log(sol);
+  //     dat[prop].cantidadPedida;
+  //   }
+  // });
 
   return (
     <div className="container">
@@ -141,13 +161,14 @@ export const SolicitudDeCompuesto = () => {
             <tr>
               <th>Caucho</th>
               <th>Cantidad</th>
+              <th>Fecha de Solicitud</th>
             </tr>
           </thead>
           <tbody>
             {datas.map((pre, i) => (
               <tr key={i}>
-                <th>{pre.tipoDeCaucho}</th>
-                <th>{pre.cantidadPedida}</th>
+                <th>{pre.TipoDeCaucho}</th>
+                <th>{pre.CantidadSolicitada}</th>
               </tr>
             ))}
           </tbody>
@@ -156,15 +177,56 @@ export const SolicitudDeCompuesto = () => {
           Enviar
         </button>
       </div>
-      {solicitud.map((dat, i) => {
-        for (const prop in dat) {
-          let sol = Object.values(dat[prop]);
-          //let proper = Object.getOwnPropertyNames(dat[prop]);
-          console.log(dat[prop]);
-          //console.log(sol);
-          //return <div>{sol}</div>;
-        }
-      })}
+      <hr />
+      <div>
+        <table className="table table-sm">
+          <thead>
+            <tr>
+              <th>Caucho</th>
+              <th>Cantidad</th>
+              <th>Fecha de Solicitud</th>
+              <th>Numero de Solicitud</th>
+              <th>Cantidad Recibida</th>
+              <th>Fecha de Recepción</th>
+              <th>Guia de Despacho</th>
+            </tr>
+          </thead>
+          <tbody>
+            {solicitud.map((pre, i) => (
+              <tr key={i}>
+                <th>{pre.TipoDeCaucho}</th>
+                <th>{pre.CantidadSolicitada}</th>
+                <th>{pre.FechaDeSolicitud}</th>
+                <th>
+                  <input
+                    type="text"
+                    name="NumeroDeSolicitud"
+                    id=""
+                    defaultValue={pre.NumeroDeSolicitud}
+                    placeholder={pre.NumeroDeSolicitud}
+                  />
+                </th>
+                <th>
+                  <input
+                    type="text"
+                    name="NumeroDeSolicitud"
+                    id=""
+                    placeholder={pre.CantidadRecibida}
+                  />
+                </th>
+                <th>
+                  <input
+                    type="text"
+                    name="NumeroDeSolicitud"
+                    id=""
+                    placeholder={pre.FechaDeRecibido}
+                  />
+                </th>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
