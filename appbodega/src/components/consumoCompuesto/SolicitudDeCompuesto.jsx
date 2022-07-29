@@ -1,17 +1,14 @@
 import {
   addDoc,
   collection,
-  Timestamp,
-  doc,
-  setDoc,
   getDocs,
-  getDoc,
   query,
   orderBy,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { db } from "../../firebase";
+import { CompuestoSolicitado } from "./CompuestoSolicitado";
 
 export const SolicitudDeCompuesto = () => {
   const { register, handleSubmit } = useForm();
@@ -31,8 +28,6 @@ export const SolicitudDeCompuesto = () => {
     }
   };
 
-  //const solicitudCaucho = collection(db, "solicitudCaucho");
-
   const onSubmit = (d) => {
     const preSolicitud = {
       TipoDeCaucho: d.tipoDeCaucho,
@@ -44,7 +39,7 @@ export const SolicitudDeCompuesto = () => {
     };
     setData([...datas, preSolicitud]);
   };
-  console.log(datas);
+
   const cargaData = (b) => {
     addDoc(collection(db, "solicitudesDeCaucho"), ...b);
   };
@@ -84,25 +79,6 @@ export const SolicitudDeCompuesto = () => {
     };
     solicitudes().catch(console.error);
   }, []);
-
-  console.log(solicitud);
-
-  // solicitud.map((dat, i, arr) => {
-  //   console.log(dat);
-  // });
-
-  // solicitud.map((dat, i) => {
-  //   for (const prop in dat) {
-  //     let sol = Object.values(dat[prop]);
-  //     //let proper = Object.getOwnPropertyNames(dat[prop]);
-  //     // console.log(dat[prop]);
-  //     console.log(dat[prop].cantidadPedida);
-  //     console.log(dat[prop].tipoDeCaucho);
-  //     // console.log(sol);
-  //     //console.log(sol);
-  //     dat[prop].cantidadPedida;
-  //   }
-  // });
 
   return (
     <div className="container">
@@ -150,7 +126,6 @@ export const SolicitudDeCompuesto = () => {
         </div>
         <div className="">Solicitudes Realizadas:</div>
         <button className="btn btn-success" type="submit" value="Agregar">
-          {" "}
           Agregar
         </button>
       </form>
@@ -174,59 +149,11 @@ export const SolicitudDeCompuesto = () => {
           </tbody>
         </table>
         <button className="btn btn-success" onClick={handleAdd}>
-          Enviar
+          Solicitar
         </button>
       </div>
       <hr />
-      <div>
-        <table className="table table-sm">
-          <thead>
-            <tr>
-              <th>Caucho</th>
-              <th>Cantidad</th>
-              <th>Fecha de Solicitud</th>
-              <th>Numero de Solicitud</th>
-              <th>Cantidad Recibida</th>
-              <th>Fecha de Recepción</th>
-              <th>Guia de Despacho</th>
-            </tr>
-          </thead>
-          <tbody>
-            {solicitud.map((pre, i) => (
-              <tr key={i}>
-                <th>{pre.TipoDeCaucho}</th>
-                <th>{pre.CantidadSolicitada}</th>
-                <th>{pre.FechaDeSolicitud}</th>
-                <th>
-                  <input
-                    type="text"
-                    name="NumeroDeSolicitud"
-                    id=""
-                    defaultValue={pre.NumeroDeSolicitud}
-                    placeholder={pre.NumeroDeSolicitud}
-                  />
-                </th>
-                <th>
-                  <input
-                    type="text"
-                    name="NumeroDeSolicitud"
-                    id=""
-                    placeholder={pre.CantidadRecibida}
-                  />
-                </th>
-                <th>
-                  <input
-                    type="text"
-                    name="NumeroDeSolicitud"
-                    id=""
-                    placeholder={pre.FechaDeRecibido}
-                  />
-                </th>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <CompuestoSolicitado />
     </div>
   );
 };

@@ -8,8 +8,8 @@ export const cargaInputs = [
     label: "Bodega de Sustancias Peligrosas",
   },
   {
-    id: "compuestosCaucho",
-    label: "Consumo de Compuesto de Caucho",
+    id: "directoriocaucho",
+    label: "Compuesto de Caucho",
   },
   {
     id: "consumoParches",

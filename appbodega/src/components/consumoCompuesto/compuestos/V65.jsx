@@ -1,12 +1,10 @@
 import React from "react";
 import TablaStockconBotonesEliminar from "../TablaStockconBotonesEliminar";
 import TablaConsumo from "../TablaConsumo";
-import { BotonVolver } from "../../BotonVolver";
 
 const V65 = () => {
   return (
     <>
-      <BotonVolver />
       <TablaStockconBotonesEliminar
         nombre={"V65"}
         codigoCaucho={409547}

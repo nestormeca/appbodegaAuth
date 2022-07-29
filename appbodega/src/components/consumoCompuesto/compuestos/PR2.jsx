@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TablaStockconBotonesEliminar from "../TablaStockconBotonesEliminar";
 import TablaConsumo from "../TablaConsumo";
-import { BotonVolver } from "../../BotonVolver";
+
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "../../../firebase";
 
@@ -33,7 +33,6 @@ const PR2 = () => {
 
   return (
     <>
-      <BotonVolver />
       <TablaStockconBotonesEliminar
         nombre={"PR2"}
         codigoCaucho={409829}

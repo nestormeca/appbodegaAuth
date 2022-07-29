@@ -9,9 +9,6 @@ const Directorio2 = () => {
         {cargaInputs.map((label, i) => (
           <Link to={label.id} className="btn btn-success m-1 " key={label.id}>
             {label.label}
-            <div className="">
-              <i className="fa-solid fa-anchor"></i>
-            </div>
           </Link>
         ))}
       </div>

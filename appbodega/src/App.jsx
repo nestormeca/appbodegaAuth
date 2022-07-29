@@ -10,7 +10,7 @@ import StockRepuestos from "./routes/StockRepuestos";
 import V1V63 from "./components/consumoCompuesto/compuestos/V1-V63";
 import V62 from "./components/consumoCompuesto/compuestos/V62";
 import V63 from "./components/consumoCompuesto/compuestos/V63";
-import DirectorioCompuestos from "./components/DirectorioCompuestos";
+import DirectorioCauchos from "./components/consumoCompuesto/DirectorioCauchos";
 import Navbar from "./components/Navbar";
 import Gruas from "./routes/EquiposStock/Gruas";
 import V65 from "./components/consumoCompuesto/compuestos/V65";
@@ -20,11 +20,14 @@ import PR2 from "./components/consumoCompuesto/compuestos/PR2";
 import V057 from "./components/consumoCompuesto/compuestos/V057";
 import { CargaDeCaucho } from "./routes/CargaDeCaucho";
 import { SolicitudDeCompuesto } from "./components/consumoCompuesto/SolicitudDeCompuesto";
+import ConsumoAno from "./components/consumoCompuesto/compuestos/ConsumoAno";
+import { BotonVolver } from "./components/BotonVolver";
 
 const App = () => {
   return (
     <>
       <Navbar />
+      <BotonVolver />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route
@@ -52,15 +55,15 @@ const App = () => {
           }
         />
         <Route
-          path="/compuestosCaucho"
+          path="/directoriocaucho"
           element={
             <ProtectedRoute>
-              <DirectorioCompuestos />
+              <DirectorioCauchos />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/compuestosCaucho/v62"
+          path="/directoriocaucho/consumos/v62"
           element={
             <ProtectedRoute>
               <V62 />
@@ -68,7 +71,7 @@ const App = () => {
           }
         />
         <Route
-          path="/compuestosCaucho/v63"
+          path="/directoriocaucho/consumos/v63"
           element={
             <ProtectedRoute>
               <V63 />
@@ -76,7 +79,7 @@ const App = () => {
           }
         />
         <Route
-          path="/compuestosCaucho/v1v63"
+          path="/directoriocaucho/consumos/V1V63"
           element={
             <ProtectedRoute>
               <V1V63 />
@@ -84,7 +87,7 @@ const App = () => {
           }
         />
         <Route
-          path="/compuestosCaucho/v65"
+          path="/directoriocaucho/consumos/V65"
           element={
             <ProtectedRoute>
               <V65 />
@@ -92,7 +95,7 @@ const App = () => {
           }
         />
         <Route
-          path="/compuestosCaucho/v064"
+          path="/directoriocaucho/consumos/V064"
           element={
             <ProtectedRoute>
               <V064 />
@@ -100,7 +103,7 @@ const App = () => {
           }
         />
         <Route
-          path="/compuestosCaucho/v066"
+          path="/directoriocaucho/consumos/V066"
           element={
             <ProtectedRoute>
               <V066 />
@@ -108,7 +111,7 @@ const App = () => {
           }
         />
         <Route
-          path="/compuestosCaucho/v057"
+          path="/directoriocaucho/consumos/V057"
           element={
             <ProtectedRoute>
               <V057 />
@@ -116,7 +119,7 @@ const App = () => {
           }
         />
         <Route
-          path="/compuestosCaucho/pr2"
+          path="/directoriocaucho/consumos/PR2"
           element={
             <ProtectedRoute>
               <PR2 />
@@ -124,7 +127,16 @@ const App = () => {
           }
         />
         <Route
-          path="/compuestosCaucho/cargarcompuesto"
+          path="/directoriocaucho/consumos"
+          element={
+            <ProtectedRoute>
+              <ConsumoAno />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/directoriocaucho/recepcion"
           element={
             <ProtectedRoute>
               <CargaDeCaucho />
@@ -132,7 +144,7 @@ const App = () => {
           }
         />
         <Route
-          path="/solicitudDeCompuesto"
+          path="/directoriocaucho/solicitudcaucho"
           element={
             <ProtectedRoute>
               <SolicitudDeCompuesto />
